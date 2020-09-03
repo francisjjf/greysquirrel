@@ -7,7 +7,7 @@ body{
 
 
 #mainDiv{
-    width: 1070px;
+    width: 1200px;
     height: 625px;
     position: absolute;
 
@@ -21,7 +21,7 @@ body{
 }
 
 #left{
-	width:400px;
+	width:500px;
 	height:625px;
 	float:left;
 
@@ -34,15 +34,15 @@ body{
 }
 
 .imgdiv{
-	width:400px;
-	height:400px;
+	width:500px;
+	height:500px;
 	background-size: cover;
-		background-size:400px 400px !important;
+		background-size:500px 500px !important;
 
 }
 
 #loveHeart{
-	width:670px;
+	width:700px;
 	height:625px;
 	float:left; !important;
 	
@@ -50,15 +50,15 @@ body{
 
 
 #story{
-	width:400px;
+	width:500px;
 	height:225px;
 	
 }
 
 
 #photo{
-	width:400px;
-	height:400px;
+	width:500px;
+	height:500px;
 }
 
 
@@ -77,8 +77,8 @@ body{
 
 
 .item{
-	width:400px !important;
-	height:400px!important;
+	width:500px !important;
+	height:500px!important;
 }
   
   .carousel-fade .carousel-inner .item {
