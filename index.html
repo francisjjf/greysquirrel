@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script type="text/javascript" src="./js/jquery-1.12.2.min.js"></script>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+	
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('./fonts/digital-7_mono.ttf') format("truetype");
+		}
+		@font-face {
+			font-family: xjt;
+			src: url('./fonts/xjt.ttf') format("truetype");
+		}
+		@font-face {
+			font-family: luobo;
+			src: url('./fonts/luobo.ttf') format("truetype");
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<audio src="./Clara Kennedy - I swear.mp3" ></audio>
+	
+	<div style="margin-top:20%;margin-left:10%;margin-right:10%;" class="progress progress-striped active">
+		<div class="progress-bar progress-bar-warning" role="progressbar"
+			 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+			 style="width: 0%;">
+			
+		</div>
+	</div>
+	<div style="text-align:center;font-family:digit,Helvetica,sans-serif;font-size:26px" id="info">0%</div>
+	
+	<script type="text/javascript">
+var pictures = [
+	'./img/0.png', 
+	'./img/1.png', 
+	'./img/2.png', 
+	'./img/3.png', 
+	'./img/4.png', 
+	'./img/5.png', 
+	'./img/6.png', 
+	'./img/7.png', 
+	'./img/8.png', 
+	'./img/9.png', 
+	'./img/10.png', 
+	'./img/11.png',
+	'./img/12.png',
+	'./img/13.png',
+	'./img/14.png',
+	'./img/15.png',
+	'./img/16.png',
+	'./img/17.png',
+	'./img/18.png',
+	'./img/19.png',
+	'./img/20.png',
+	'./img/21.png',
+	'./img/22.png',
+	'./img/23.png',
+	'./img/24.png',
+	'./img/25.png',
+	'./img/26.png',
+	'./img/27.png',
+	'./img/28.png',
+	'./img/29.png',
+	'./img/30.png',
+	'./img/31.png',
+	'./img/32.png',
+	'./img/33.png',
+	'./img/34.png',
+	'./img/35.png',
+	'./img/36.png',
+	'./img/37.png',
+	'./img/38.png',
+	'./img/39.png',
+	'./img/40.png',
+	'./img/41.png',
+	'./img/42.png',
+	'./img/43.png',
+	'./img/44.png',
+	'./img/45.png',
+	'./img/46.png',
+	'./img/47.png',
+	'./img/48.png',
+	'./img/49.png',
+	'./img/wedding.png',
+	'./img/continue.png'
+];
+
+var i = 0;
+var range = 100/pictures.length;
+var val = 0;
+
+function updateLoading() {
+	if (pictures.length === i){
+		val = 100;
+	} else {
+		var x = range * (i+1) - val;
+		var extra = x > 0 ? Math.random(x) / (Math.random(5) + 1) : 0;
+		console.log(extra + ':::::' + x);
+		val += extra;
+		val = Math.min(99.99, val);
+	}
+	val = Math.floor(val * 100) / 100;
+	console.log(val + '****' + i + '****' + range);
+	var progress = val + '%';
+	$('#info').html(progress);
+	$('.progress-bar').css("width", progress);
+	if (i == pictures.length) {
+		clearInterval(iter);
+		window.location.replace('love.html');
+	}
+}
+
+
+var iter = setInterval(updateLoading, 500);
+
+function loadImage(url,callback) {
+
+    var img =new Image();
+    img.onload =function(){
+        img.onload =null;
+        callback(img);
+    }
+    img.src = url;
+}
+ 
+function call(img){
+	i = i + 1;
+	loadImage(pictures[i], call);
+}
+
+loadImage(pictures[i],call);
+ 
+</script>
+	
+</body>

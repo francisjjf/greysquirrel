@@ -17,14 +17,14 @@
 			font-family: digit;
 			src: url('./fonts/digital-7_mono.ttf') format("truetype");
 		}
-        @font-face {
-            font-family: xjt;
-            src: url('./fonts/xjt.ttf') format("truetype");
-        }
 		@font-face {
-            font-family: luobo;
-            src: url('./fonts/luobo.ttf') format("truetype");
-        }
+			font-family: xjt;
+			src: url('./fonts/xjt.ttf') format("truetype");
+		}
+		@font-face {
+			font-family: luobo;
+			src: url('./fonts/luobo.ttf') format("truetype");
+		}
 	</style>
 	
 	
@@ -84,8 +84,7 @@
 </head>
 
 <body>
-    <audio src="./Clara Kennedy - I swear.mp3" autoplay="true" loop="loop"></audio>
-
+	<audio src="./Clara Kennedy - I swear.mp3" autoplay="true" loop="loop"></audio>
 	<div id="mainDiv" class="jjf">
 		<div id="left">
 			<div id="photo">
@@ -343,7 +342,7 @@
 			["2016.6.5 桌游店",						"灰灰初次见到松鼠，一次的错过"],
 			["2016.12.24 航海日志",					"灰灰跟松鼠再次相见"],
 			["2016.12.25",							"不在错过，故事开始"],
-			["2016.12.28",							"松鼠的生日，18岁"],
+			["2016.12.28",							"松鼠的生日"],
 			["2017.1.1 南艺",						"第一次去南艺，可爱的石松鼠与松鼠"],
 			["2017.1.7 南艺食堂",					"松鼠说食堂饭不好吃，但两个人吃得很香"],
 			["2017.1.29",							"松鼠给灰灰画的头像，可爱的松鼠"],
@@ -367,7 +366,7 @@
 			["2018.6.22 英国 哈利波特片场",			"跨越三分之一个世界去见松鼠"],
 			["2018.8.20 南京禄口机场",				"欢迎回来"],
 			["2018.12.9 天津",						"去帝都听讲座，顺路来转转"],
-			["2018.12.28 南京外国语学校",						"带松鼠去灰灰的高中见见小姑子"],
+			["2018.12.28 南京外国语学校",						"带松鼠去灰灰的高中"],
 			["2019.2.24 柴柯夫斯基",				"撸个狗狗"],
 			["2019.6.26 南京艺术学院",				"小松鼠毕业啦"],
 			["2019.7.28 德基广场",					"吃个漫画里的肉肉"],
@@ -390,8 +389,7 @@
 			["2020.6.6 小灰灰和小松鼠的新家",		"搬家啦，即将开始新的生活"],
 			["2020.8.16 小灰灰和小松鼠的新家",		"一起生活，一起做饭招待前来的朋友们"],
 			["2020.10.5 婚礼的殿堂",				"我们结婚啦！！！！！！"],
-
-			["感谢与你的相遇",		   				"To Be Continue & Win"]
+			["感谢与你的相遇",		   				"To Be Continued & Win"]
 			];
 		
 	
@@ -406,9 +404,7 @@
 			index = (index+1) % words.length;
 
          	var _play = function () {
-				if (index === words.length - 1) {
-					clearInterval(inter);
-				}
+				
 				
 				$('#time').hide();
 				$('#word').hide();
@@ -418,8 +414,13 @@
 				$('#time').fadeToggle();
                 $('#word').fadeToggle();
                 $('#carousel').carousel('next');
+				if (index === 0) {
+					clearInterval(inter);
+					$('#carousel').carousel('pause');
+				}
          	};
-            var inter = setInterval(_play, rate);
+			var inter = setInterval(_play, rate);
+//            var inter = setTimeout(_play, rate);
         }();
     });
 	</script>
