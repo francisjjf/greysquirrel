@@ -3,6 +3,8 @@
 
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 	<script type="text/javascript" src="./js/jquery.js"></script>
 	<script type="text/javascript" src="./js/jquery-1.12.2.min.js"></script>
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -22,14 +24,19 @@
 			src: url('./fonts/luobo.ttf') format("truetype");
 		}
 	</style>
+	<link rel="preload" as="font" href="./fonts/digital-7_mono.ttf">
+	<link rel="preload" as="font" href="./fonts/xjt.ttf">
+	<link rel="preload" as="font" href="./fonts/luobo.ttf">
 </head>
 
 
 
 <body>
 	<audio src="./Clara Kennedy - I swear.mp3" ></audio>
-	
-	<div style="margin-top:20%;margin-left:10%;margin-right:10%;" class="progress progress-striped active">
+
+
+	<div style="margin-top:20%;text-align:center;font-family:xjt,Helvetica,sans-serif;font-size:20px">满满的故事，慢慢的加载...</div>	
+	<div style="margin-left:10%;margin-right:10%;" class="progress progress-striped active">
 		<div class="progress-bar progress-bar-warning" role="progressbar"
 			 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
 			 style="width: 0%;">
@@ -99,17 +106,15 @@ var range = 100/pictures.length;
 var val = 0;
 
 function updateLoading() {
-	if (pictures.length === i){
-		val = 100;
-	} else {
-		var x = range * (i+1) - val;
-		var r = Math.random() * x;
-		var d = (Math.random() * 5 + 1);
-		var extra = x > 0 ? r / d : 0;
-		console.log('x: ' + x + '  r: ' + r + '  d: ' + d + '  extra: ' + extra);
-		val += extra;
-		val = Math.min(99.99, val);
-	}
+	
+	var x = range * (i+1) - val;
+	var r = Math.random() * x;
+	var d = (Math.random() * 5 + 1);
+	var extra = x > 0 ? r / d : 0;
+	console.log('x: ' + x + '  r: ' + r + '  d: ' + d + '  extra: ' + extra);
+	val += extra;
+	val = Math.min(99.99, val);
+	
 	val = Math.floor(val * 100) / 100;
 	console.log('val: ' + val + ',  ' + 'i: ' + i + ',   ' + 'range: ' + range);
 	var progress = val + '%';
@@ -120,9 +125,6 @@ function updateLoading() {
 		window.location.replace('love.html');
 	}
 }
-
-
-var iter = setInterval(updateLoading, 500);
 
 function loadImage(url,callback) {
 
@@ -136,12 +138,16 @@ function loadImage(url,callback) {
  
 function call(img){
 	i = i + 1;
-//	loadImage(pictures[i], call);
 }
 
-for (var j = 0; j < pictures.length; j++) {
-	loadImage(pictures[j],call);
-}
+$(document).ready(function(){
+	var iter = setInterval(updateLoading, 500);
+
+	for (var j = 0; j < pictures.length; j++) {
+		loadImage(pictures[j],call);
+	}
+});
+
 
  
 </script>
