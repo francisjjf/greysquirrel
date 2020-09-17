@@ -42,20 +42,14 @@ function getHeartPoint(angle) {
 	return new Array(offsetX + x, offsetY + y);
 }
 
-function drawHeart() {
-	if (heart) {
-		heart.push(bloom);
-		garden.createRandomBloom(bloom[0], bloom[1]);
-	} else {
-		drawHeart();
-	}
-}
-
 function startHeartAnimation() {
 	var interval = 50;
 	var angle = 10;
 	var heart = new Array();
 	var animationTimer = setInterval(function () {
+		if (!garden) {
+			return;
+		}
 		var bloom = getHeartPoint(angle);
 		var draw = true;
 		for (var i = 0; i < heart.length; i++) {
@@ -67,7 +61,8 @@ function startHeartAnimation() {
 			}
 		}
 		if (draw) {
-			drawHeart();
+			heart.push(bloom);
+			garden.createRandomBloom(bloom[0], bloom[1]);
 		}
 		if (angle >= 30) {
 			clearInterval(animationTimer);

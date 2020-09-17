@@ -103,13 +103,15 @@ function updateLoading() {
 		val = 100;
 	} else {
 		var x = range * (i+1) - val;
-		var extra = x > 0 ? Math.random(x) / (Math.random(5) + 1) : 0;
-		console.log(extra + ':::::' + x);
+		var r = Math.random() * x;
+		var d = (Math.random() * 5 + 1);
+		var extra = x > 0 ? r / d : 0;
+		console.log('x: ' + x + '  r: ' + r + '  d: ' + d + '  extra: ' + extra);
 		val += extra;
 		val = Math.min(99.99, val);
 	}
 	val = Math.floor(val * 100) / 100;
-	console.log(val + '****' + i + '****' + range);
+	console.log('val: ' + val + ',  ' + 'i: ' + i + ',   ' + 'range: ' + range);
 	var progress = val + '%';
 	$('#info').html(progress);
 	$('.progress-bar').css("width", progress);
@@ -134,10 +136,13 @@ function loadImage(url,callback) {
  
 function call(img){
 	i = i + 1;
-	loadImage(pictures[i], call);
+//	loadImage(pictures[i], call);
 }
 
-loadImage(pictures[i],call);
+for (var j = 0; j < pictures.length; j++) {
+	loadImage(pictures[j],call);
+}
+
  
 </script>
 	
